@@ -11,14 +11,22 @@ class VehiculosController
     }
 
     public function index()
-    {   
-        $catalogo = $this->gestorVehiculos->listar();
-        //Calculos para el Paginador
-        $totalCatalogo=count($catalogo);
-        $catalogoPorPaginas=3;
-        $totalPaginas=ceil($totalCatalogo/$catalogoPorPaginas);
-        $paginaActualCatalogo=$_GET['pActual'] ?? 1;
-        $catalogoAcortadas=array_slice($catalogo,($paginaActualCatalogo-1)*$catalogoPorPaginas,$catalogoPorPaginas);
+    {    
+        //Calculos para el Paginador de Coches
+        $coches = $this->gestorVehiculos->listarCoches();
+        $totalCoches=count($coches);
+        $cochesPorPaginas=3;
+        $totalPaginasCoches=ceil($totalCoches/$cochesPorPaginas);
+        $paginaActualCoche=(int)($_GET['pActualCoches'] ?? 1);
+        $cochesAcortadas=array_slice($coches,($paginaActualCoche-1)*$cochesPorPaginas,$cochesPorPaginas);
+
+        //Calculos para el Paginador de Motos
+        $motos = $this->gestorVehiculos->listarMotos();
+        $totalMotos=count($motos);
+        $motosPorPaginas=3;
+        $totalPaginasMotos=ceil($totalMotos/$motosPorPaginas);
+        $paginaActualMoto=(int)($_GET['pActualMotos'] ?? 1);
+        $motosAcortadas=array_slice($motos,($paginaActualMoto-1)*$motosPorPaginas,$motosPorPaginas);
         include "views/listar.php";
     }
 

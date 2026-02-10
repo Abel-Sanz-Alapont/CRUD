@@ -22,7 +22,7 @@
                 <th>Acciones</th>
 
             </tr>
-            <?php foreach ($catalogoAcortadas as $coche): ?>
+            <?php foreach ($cochesAcortadas as $coche): ?>
                 <?php if (get_class($coche) == "Coche"): ?>
 
                     <tr>
@@ -45,11 +45,11 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         </table>
-        <!-- Paginador -->
-        <?php for($i=1;$i<=$totalCatalogo;$i++):?>
-            <a href="index.php?accion=index&pActual=<?php $i ?>"><?= $i ?></a>
-        <?php endfor;?>
-        
+        <!--Paginador de Coches-->
+        <?php for ($i = 1; $i <= $totalCoches; $i++): ?>
+            <a href="index.php?accion=index&pActualCoches=<?= $i?>"><?= $i ?></a>
+        <?php endfor; ?>
+
         <!--LISTADO DE MOTOS-->
         <h3> MOTOS
             <table border="1" cellpadding="10">
@@ -61,7 +61,7 @@
 
                 </tr>
 
-                <?php foreach ($catalogoAcortadas as $moto): ?>
+                <?php foreach ($motosAcortadas as $moto): ?>
                     <?php if (get_class($moto) == "Moto"): ?>
                         <tr>
                             <td><?= $moto->getMatricula() ?></td>
@@ -84,6 +84,10 @@
                 <?php endforeach; ?>
 
             </table>
+            <!--Paginador de Motos-->
+            <?php for ($i = 1; $i <= $totalMotos; $i++): ?>
+                <a href="index.php?accion=index&pActualMotos=<?= $i?>"><?= $i ?></a>
+            <?php endfor; ?>
 
 </body>
 
