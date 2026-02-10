@@ -31,6 +31,22 @@ class Moto extends Vehiculo{
         $this->marca = $marca;
 
     }
+
+    /**
+     * Get the value of marca
+     */
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    /**
+     * Get the value of cilindrada
+     */
+    public function getCilindrada()
+    {
+        return $this->cilindrada;
+    }
 }
 
 

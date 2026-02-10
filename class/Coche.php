@@ -34,6 +34,22 @@
         $this->bastidor = $bastidor;
 
     }
+
+    /**
+     * Get the value of bastidor
+     */
+    public function getBastidor()
+    {
+        return $this->bastidor;
+    }
+
+    /**
+     * Get the value of precio
+     */
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
 }
 
 ?>

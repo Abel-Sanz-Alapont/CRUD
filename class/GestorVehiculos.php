@@ -2,23 +2,23 @@
 
     class GestorVehiculos{
 
-        protected $catalago;
-
         public function __construct()
         {
-            $this->catalago=[];
+            if (!isset($_SESSION['catalogo'])) {
+                $_SESSION['catalogo']=[];
+            }
         }
 
         public function anyadir($exposicion){
-            $this->catalago[]=$exposicion;
+            $_SESSION['catalogo'][]=$exposicion;
         }
 
         public function listar(){
-            return $this->catalago;
+            return $_SESSION['catalogo'];
         }
 
         public function buscar($matricula){
-            foreach ($this->catalago as $exposicion) {
+            foreach ($_SESSION['catalogo'] as $exposicion) {
                 if($exposicion->getMatricula()==$matricula){
                     return $exposicion;
                 }
@@ -27,28 +27,28 @@
 
         public function actualizarCoche($matricula,$bastidor, $precio){
 
-            foreach ($this->catalago as $i=>$exposicion){
+            foreach ($_SESSION['catalogo'] as $i=>$exposicion){
                 if ($exposicion->getMatricula()==$matricula) {
-                        $this->catalago[$i]->setBastidor($bastidor);
-                        $this->catalago[$i]->setPrecio($precio);
+                          $_SESSION['catalogo'][$i]->setBastidor($bastidor);
+                          $_SESSION['catalogo'][$i]->setPrecio($precio);
                 }
             }
         }
         public function actualizarMoto($matricula,$marca, $cilindrada){
 
-            foreach ($this->catalago as $i=>$exposicion){
+            foreach ($_SESSION['catalogo'] as $i=>$exposicion){
                 if ($exposicion->getMatricula()==$matricula) {
-                        $this->catalago[$i]->setMarca($marca);
-                        $this->catalago[$i]->setCilindrada($cilindrada);
+                          $_SESSION['catalogo'][$i]->setMarca($marca);
+                          $_SESSION['catalogo'][$i]->setCilindrada($cilindrada);
                 }
             }
         }
 
         public function eliminar($matricula){
-            foreach ($this->catalago as  $i=>$exposicion) {
+            foreach ($_SESSION['catalogo'] as  $i=>$exposicion) {
                if($exposicion->getMatricula()==$matricula){
-                unset($this->catalago[$i]);
-                $this->catalago=array_values($this->catalago);
+                unset($_SESSION['catalogo'][$i]);
+                  $_SESSION['catalogo']=array_values($_SESSION['catalogo']);
                }
             }
             
