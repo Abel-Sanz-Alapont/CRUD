@@ -11,8 +11,14 @@ class VehiculosController
     }
 
     public function index()
-    {
+    {   
         $catalogo = $this->gestorVehiculos->listar();
+        //Calculos para el Paginador
+        $totalCatalogo=count($catalogo);
+        $catalogoPorPaginas=3;
+        $totalPaginas=ceil($totalCatalogo/$catalogoPorPaginas);
+        $paginaActualCatalogo=$_GET['pActual'] ?? 1;
+        $catalogoAcortadas=array_slice($catalogo,($paginaActualCatalogo-1)*$catalogoPorPaginas,$catalogoPorPaginas);
         include "views/listar.php";
     }
 
