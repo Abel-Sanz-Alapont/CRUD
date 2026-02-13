@@ -17,7 +17,7 @@ class VehiculosController
         $totalCoches=count($coches);
         $cochesPorPaginas=3;
         $totalPaginasCoches=ceil($totalCoches/$cochesPorPaginas);
-        $paginaActualCoche=(int)($_GET['pActualCoches'] ?? 1);
+        $paginaActualCoche=($_GET['pActualCoches'] ?? 1);
         $cochesAcortadas=array_slice($coches,($paginaActualCoche-1)*$cochesPorPaginas,$cochesPorPaginas);
 
         //Calculos para el Paginador de Motos
@@ -25,7 +25,7 @@ class VehiculosController
         $totalMotos=count($motos);
         $motosPorPaginas=3;
         $totalPaginasMotos=ceil($totalMotos/$motosPorPaginas);
-        $paginaActualMoto=(int)($_GET['pActualMotos'] ?? 1);
+        $paginaActualMoto=($_GET['pActualMotos'] ?? 1);
         $motosAcortadas=array_slice($motos,($paginaActualMoto-1)*$motosPorPaginas,$motosPorPaginas);
         include "views/listar.php";
     }

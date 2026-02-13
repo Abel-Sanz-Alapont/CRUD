@@ -46,7 +46,7 @@
             <?php endforeach; ?>
         </table>
         <!--Paginador de Coches-->
-        <?php for ($i = 1; $i <= $totalCoches; $i++): ?>
+        <?php for ($i = 1; $i <= $totalPaginasCoches; $i++): ?>
             <a href="index.php?accion=index&pActualCoches=<?= $i?>"><?= $i ?></a>
         <?php endfor; ?>
 
@@ -85,7 +85,7 @@
 
             </table>
             <!--Paginador de Motos-->
-            <?php for ($i = 1; $i <= $totalMotos; $i++): ?>
+            <?php for ($i = 1; $i <= $totalPaginasMotos; $i++): ?>
                 <a href="index.php?accion=index&pActualMotos=<?= $i?>"><?= $i ?></a>
             <?php endfor; ?>
 
